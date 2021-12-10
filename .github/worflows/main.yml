@@ -1,0 +1,26 @@
+---
+name: docker
+on:
+  push:
+    branches:
+      - master
+jobs:
+  push-docker-image:
+    runs-on: [ self-hosted, default ]
+    env:
+      DOCKER_TAG_NAME: default
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '^1.17'
+      - name: Get ID
+        id: get-id
+        run: |
+          id=$(echo ${{github.event.commits[0].message}} | cut -d "~" -f2)
+          echo $id
+          echo "DOCKER_TAG_NAME=$id" >> $GITHUB_ENV
+      - name: Build and push Docker base image
+        if: contains(fromJson('["test_tag", "affiliate_order_validation"]'), env.DOCKER_TAG_NAME)
+        run: |
+          echo VALID TAG FOUND
