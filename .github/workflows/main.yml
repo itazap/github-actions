@@ -27,9 +27,9 @@ jobs:
       - name: My first step
         uses: ./.github/find-comment
         id: fc
-          with:
-            issue-number: 1
-            body-includes: search string 1
+        with:
+          issue-number: 1
+          body-includes: search string 1
       - name: Get ID
         id: get-id
         run: |
