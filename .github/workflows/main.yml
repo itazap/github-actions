@@ -34,6 +34,6 @@ jobs:
           echo "DOCKER_TAG_NAME=$id" >> $GITHUB_ENV
           echo "${{toJSON(github.event)}}"
       - name: Build and push Docker base image
-        if: contains(fromJson('["test_tag", "affilxiate_obrder_validation33"]'), env.DOCKER_TAG_NAME)
+        if: contains(fromJson('["test_tag", "affilx3iate_rder_validation33"]'), env.DOCKER_TAG_NAME)
         run: |
           echo VALID TAG FOUND
