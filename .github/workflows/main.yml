@@ -27,9 +27,9 @@ jobs:
       - name: My first step
         uses: ./.github/find-comment
         id: fc
-          with:
-            issue-number: 1
-            body-includes: search string 1
+        with:
+          issue-number: 1
+          body-includes: search string 1
       - name: Get ID
         id: get-id
         run: |
@@ -38,6 +38,6 @@ jobs:
           echo "DOCKER_TAG_NAME=$id" >> $GITHUB_ENV
           echo "${{toJSON(github.event)}}"
       - name: Build and push Docker base image
-        if: contains(fromJson('["test_tag", "affilx3iarder_validation33"]'), env.DOCKER_TAG_NAME)
+        if: contains(fromJson('["test_tag", "affilx3iarder_valfidation33"]'), env.DOCKER_TAG_NAME)
         run: |
           echo VALID TAG FOUND
