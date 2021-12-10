@@ -31,6 +31,6 @@ jobs:
           echo $id
           echo "DOCKER_TAG_NAME=$id" >> $GITHUB_ENV
       - name: Build and push Docker base image
-        if: contains(fromJson('["test_tag", "affiliate_order_validation1"]'), env.DOCKER_TAG_NAME)
+        if: contains(fromJson('["test_tag", "affiliate_order_validation2"]'), env.DOCKER_TAG_NAME)
         run: |
           echo VALID TAG FOUND
