@@ -30,6 +30,10 @@ jobs:
         with:
           issue-number: 1
           body-includes: ita
+      - run: |
+          echo ${{ steps.fc.outputs.comment-id }}
+          echo ${{ steps.fc.outputs.comment-body }}
+          echo ${{ steps.fc.outputs.comment-author }}
       - name: Get ID
         id: get-id
         run: |
