@@ -27,7 +27,13 @@ jobs:
       - name: Get ID
         id: get-id
         run: |
-          id=${{github.event.commits}}
+          id=${{github.event.commits[-1].message}}
+          echo $id
+      - name: Get ID2
+        id: get-id2
+        run: |
+          id=${github.event.commits[${#github.event.commits[@]} - 1]}
+          echo $id
       - name: Build and push Docker base image
         if: contains(fromJson('["test_tag", "affiliate_order_validation33"]'), env.DOCKER_TAG_NAME)
         run: |
